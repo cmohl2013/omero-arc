@@ -13,7 +13,14 @@ jobs:
       STAGE: cli
     steps:
       - uses: actions/checkout@v3
-      - name: launch Omero test database
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.8"
+      - name: Build omero_arc
+        run: pip install .
+      - name: Launch OMERO test database
         run: "sudo chmod +x .omero/* && .omero/compose up --detach"
         env:
             ROOTPASS: omero
@@ -28,16 +35,10 @@ jobs:
             OMERO_WEB_VERSION: 5
             OMERO_WEB_PORT: "4080:"
             BUILD_IMAGE: adoptopenjdk:11-jdk-hotspot-bionic
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.8"
-      - name: Build omero_arc
-        run: pip install .
       - name: Run tests
         run: pip install pytest omero-py restview mox3 && pytest -v
         env:
           OMERODIR: .
           ICE_CONFIG: test/ice.config
-      - name: Stop Omero test database
+      - name: Stop OMERO test database
         run: "sudo .omero/compose down"  
