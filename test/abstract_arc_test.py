@@ -9,7 +9,7 @@ from generate_xml import list_file_ids
 import tarfile
 import os
 import shutil
-from omero_cli_transfer import ArcPacker
+from omero_arc import ArcPacker
 from omero.testlib import ITest
 from omero.cli import CLI
 from omero.plugins.sessions import SessionsControl
