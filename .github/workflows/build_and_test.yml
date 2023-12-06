@@ -9,28 +9,12 @@ jobs:
   test:
     name: Run integration tests against OMERO
     runs-on: ubuntu-latest
-    services:
-        omero-db-service:
-          image: docker/compose:1.29.2
-          ports:
-            - 4063:4063
-            - 4064:4064
-            - 4080:4080
-          options: --entrypoint "docker-compose"
     env:
       STAGE: cli
     steps:
       - uses: actions/checkout@v3
       
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.8"
-      - name: Build omero_arc
-        run: |
-          $CONDA/bin/conda install -c anaconda python=3.8  
-          $CONDA/bin/conda install -c conda-forge zeroc-ice=3.6.5
-          $CONDA/bin/python -m pip install .
+      
       - name: Launch OMERO test database
         run: "sudo chmod +x .omero/* && .omero/compose up --detach"
         env:
@@ -46,6 +30,15 @@ jobs:
             OMERO_WEB_VERSION: 5
             OMERO_WEB_PORT: "4080:"
             BUILD_IMAGE: adoptopenjdk:11-jdk-hotspot-bionic
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+            python-version: "3.8"
+      - name: Build omero_arc
+        run: |
+          $CONDA/bin/conda install -c anaconda python=3.8  
+          $CONDA/bin/conda install -c conda-forge zeroc-ice=3.6.5
+          $CONDA/bin/python -m pip install .
       - name: Run tests
         run: |
           $CONDA/bin/conda install pytest
