@@ -36,7 +36,7 @@ jobs:
             OMERO_WEB_PORT: "4080:"
             BUILD_IMAGE: adoptopenjdk:11-jdk-hotspot-bionic
       - name: Run tests
-        run: pip install pytest omero-py restview mox3 && pytest -v
+        run: pip install pytest omero-py restview mox3 omero-cli-transfer && pytest -v
         env:
           OMERODIR: .
           ICE_CONFIG: test/ice.config
