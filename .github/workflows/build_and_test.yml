@@ -9,6 +9,14 @@ jobs:
   test:
     name: Run integration tests against OMERO
     runs-on: ubuntu-latest
+    services:
+        omero-db-service:
+          image: docker/compose:1.29.2
+          ports:
+            - 4063:4063
+            - 4064:4064
+            - 4080:4080
+          options: --entrypoint "docker-compose"
     env:
       STAGE: cli
     steps:
