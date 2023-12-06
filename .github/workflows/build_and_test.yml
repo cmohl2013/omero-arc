@@ -17,19 +17,7 @@ jobs:
             - 4063:4063
             - 4064:4064
             - 4080:4080
-        env:
-          ROOTPASS: omero
-          POSTGRES_IMAGE: postgres
-          POSTGRES_VERSION: 10
-          POSTGRES_PASSWORD: postgres
-          OMERO_SERVER_IMAGE: openmicroscopy/omero-server
-          OMERO_SERVER_VERSION: 5
-          OMERO_SERVER_TCP: "4063:"
-          OMERO_SERVER_SSL: "4064:"
-          OMERO_WEB_IMAGE: openmicroscopy/omero-web-standalone
-          OMERO_WEB_VERSION: 5
-          OMERO_WEB_PORT: "4080:"
-          BUILD_IMAGE: adoptopenjdk:11-jdk-hotspot-bionic
+        
     
     env:
       STAGE: cli
@@ -37,6 +25,19 @@ jobs:
       - uses: actions/checkout@v3
       - name: launch Omero test database
         run: "sudo chmod +x .omero/* && .omero/compose up"
+        env:
+            ROOTPASS: omero
+            POSTGRES_IMAGE: postgres
+            POSTGRES_VERSION: 10
+            POSTGRES_PASSWORD: postgres
+            OMERO_SERVER_IMAGE: openmicroscopy/omero-server
+            OMERO_SERVER_VERSION: 5
+            OMERO_SERVER_TCP: "4063:"
+            OMERO_SERVER_SSL: "4064:"
+            OMERO_WEB_IMAGE: openmicroscopy/omero-web-standalone
+            OMERO_WEB_VERSION: 5
+            OMERO_WEB_PORT: "4080:"
+            BUILD_IMAGE: adoptopenjdk:11-jdk-hotspot-bionic
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
