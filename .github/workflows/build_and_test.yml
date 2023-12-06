@@ -20,8 +20,9 @@ jobs:
           python-version: "3.8"
       - name: Build omero_arc
         run: |
+          $CONDA/bin/conda install -c anaconda python=3.8  
           $CONDA/bin/conda install -c conda-forge zeroc-ice=3.6.5
-          pip install .
+          $CONDA/bin/python -m pip install .
       - name: Launch OMERO test database
         run: "sudo chmod +x .omero/* && .omero/compose up --detach"
         env:
@@ -40,7 +41,7 @@ jobs:
       - name: Run tests
         run: |
           $CONDA/bin/conda install pytest
-          pip install omero-py restview mox3 omero-cli-transfer
+          $CONDA/bin/python -m pip install omero-py restview mox3 omero-cli-transfer
           $CONDA/bin/pytest -v
         env:
           OMERODIR: .
