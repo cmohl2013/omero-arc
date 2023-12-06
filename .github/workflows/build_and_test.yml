@@ -9,22 +9,12 @@ jobs:
   test:
     name: Run integration tests against OMERO
     runs-on: ubuntu-latest
-    services:
-      database:
-        image: docker/compose:1.29.2
-        options: "--entrypoint /bin/sh"
-        ports:
-            - 4063:4063
-            - 4064:4064
-            - 4080:4080
-        
-    
     env:
       STAGE: cli
     steps:
       - uses: actions/checkout@v3
       - name: launch Omero test database
-        run: "sudo chmod +x .omero/* && .omero/compose up"
+        run: "sudo chmod +x .omero/* && .omero/compose up --detach"
         env:
             ROOTPASS: omero
             POSTGRES_IMAGE: postgres
@@ -49,3 +39,5 @@ jobs:
         env:
           OMERODIR: .
           ICE_CONFIG: test/ice.config
+      - name: Stop Omero test database
+        run: "sudo chmod +x .omero/* && .omero/compose down"  
