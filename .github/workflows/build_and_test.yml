@@ -1,0 +1,29 @@
+name: OMERO
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '0 0 * * 0'
+
+jobs:
+  test:
+    name: Run integration tests against OMERO
+    runs-on: ubuntu-latest
+    strategy:
+        matrix:
+          python-version: ["3.8"]
+    env:
+      STAGE: cli
+    steps:
+      - uses: actions/checkout@v3
+      - name: Launch test db
+        run: sudo chmod +x .omero/* && .omero/compose up
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }} 
+      - name: Build and run OMERO tests
+        run: pip install pytest omero restview mox3 && pytest -v
+        env:
+            OMERODIR: .
+            ICE_CONFIG: test/ice.config
