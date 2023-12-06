@@ -9,15 +9,15 @@ jobs:
   test:
     name: Run integration tests against OMERO
     runs-on: ubuntu-latest
-    strategy:
-        matrix:
-          python-version: ["3.8"]
-    env:
-      STAGE: cli
-    steps:
-      - uses: actions/checkout@v3
-      - name: Launch test db
-        run: sudo chmod +x .omero/* && .omero/compose up
+    services:
+      database:
+        image: docker/compose:1.29.2
+        options: "--entrypoint /bin/sh"
+        ports:
+            - 4063:4063
+            - 4064:4064
+            - 4080:4080
+        command: "sudo chmod +x .omero/* && .omero/compose up"
         env:
           ROOTPASS: omero
           POSTGRES_IMAGE: postgres
@@ -31,10 +31,17 @@ jobs:
           OMERO_WEB_VERSION: 5
           OMERO_WEB_PORT: "4080:"
           BUILD_IMAGE: adoptopenjdk:11-jdk-hotspot-bionic
+    
+    env:
+      STAGE: cli
+    steps:
+      - uses: actions/checkout@v3
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: ${{ matrix.python-version }} 
+          python-version: "3.8"
+      - name: Build omero_arc
+        run: pip install .
       - name: Build and run OMERO tests
         run: pip install pytest omero restview mox3 && pytest -v
         env:
