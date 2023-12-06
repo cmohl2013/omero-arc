@@ -34,10 +34,10 @@ jobs:
           python-version: "3.8"
       - name: Build omero_arc
         run: pip install .
-      - name: Build and run OMERO tests
-        run: pip install pytest omero restview mox3 && pytest -v
+      - name: Run tests
+        run: pip install pytest omero-py restview mox3 && pytest -v
         env:
           OMERODIR: .
           ICE_CONFIG: test/ice.config
       - name: Stop Omero test database
-        run: "sudo chmod +x .omero/* && .omero/compose down"  
+        run: "sudo .omero/compose down"  
