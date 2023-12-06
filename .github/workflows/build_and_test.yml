@@ -17,7 +17,6 @@ jobs:
             - 4063:4063
             - 4064:4064
             - 4080:4080
-        command: "sudo chmod +x .omero/* && .omero/compose up"
         env:
           ROOTPASS: omero
           POSTGRES_IMAGE: postgres
@@ -36,6 +35,8 @@ jobs:
       STAGE: cli
     steps:
       - uses: actions/checkout@v3
+      - name: launch Omero test database
+        run: "sudo chmod +x .omero/* && .omero/compose up"
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
