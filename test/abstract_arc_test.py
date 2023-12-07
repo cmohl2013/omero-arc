@@ -594,8 +594,8 @@ class AbstractArcTest(AbstractCLITest):
 
         ap = ArcPacker(
             ome_object=project_czi,
-            path_to_arc_repo=path_to_arc_repo,
-            path_to_image_files=path_omero_data_czi,
+            destination_path=path_to_arc_repo,
+            tmp_path=path_omero_data_czi,
             image_filenames_mapping=omero_data_czi_image_filenames_mapping,
             conn=self.gw,
         )

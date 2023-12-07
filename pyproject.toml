@@ -15,10 +15,14 @@ classifiers = [
     "Programming Language :: Python :: 3",
 
 ]
-dependencies = ["pandas", "openpyxl"]
+dependencies = ["omero-py==5.13.1", "pandas", "openpyxl"]
 
 [project.optional-dependencies]
-dev = ["omero-py==5.13.1", "omero-cli-transfer", "ome-types==0.4.2"]
+dev = ["omero-cli-transfer", "ome-types==0.4.2"]
+
+
+[project.entry-points."omero_cli_transfer.pack.plugin"]
+pack_arc = "omero_arc:ArcPacker"
 
 [project.urls]
 Homepage = "https://github.com/cmohl2013/omero-arc"

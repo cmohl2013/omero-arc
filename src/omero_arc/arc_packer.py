@@ -3,7 +3,7 @@ import os
 import shutil
 import subprocess
 from pathlib import Path
-
+from omero.model import Project
 import pandas as pd
 
 from omero_arc.arc_mapping import (
@@ -45,20 +45,35 @@ class ArcPacker(object):
     def __init__(
         self,
         ome_object,
-        path_to_arc_repo: Path,
-        path_to_image_files,
+        destination_path: Path,
+        tmp_path,
         image_filenames_mapping,
         conn,
     ):
+        
+        assert ome_object.OMERO_CLASS == "Project"
         self.obj = ome_object  # must be a project
-        self.path_to_arc_repo = path_to_arc_repo
+        self.path_to_arc_repo = destination_path
         self.conn = conn
         self.image_filenames_mapping = image_filenames_mapping
-        self.path_to_image_files = path_to_image_files
+        self.path_to_image_files = tmp_path
 
         self.isa_assay_mappers = []
         self.ome_dataset_for_isa_assay = {}
 
+    def pack(self):
+        if is_arc_repo(self.path_to_arc_repo):
+            self.add_data_to_arc_repo()
+        elif not self.path_to_arc_repo.exists():
+            self.create_arc_repo()
+        else:
+            msg = (f"Could not create ARC at {self.path_to_arc_repo}. "
+                    "Either specifiy a not existing directory "
+                    "to build a new ARC or specify a path to an "
+                    "existing ARC repository.")
+            raise ValueError(msg)
+
+    
     def create_arc_repo(self):
         self.initialize_arc_repo()
         self.add_data_to_arc_repo()

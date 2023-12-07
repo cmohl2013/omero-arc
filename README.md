@@ -14,16 +14,24 @@
 pip install omero-arc
 ```
 
-## Development
+## Development Environment Setup
+```
+conda create -n myenv -c conda-forge python=3.8 zeroc-ice=3.6.5
+conda activate myvenv
+```
 
+### Install omero-arc
 ```
 git clone git@github.com:cmohl2013/omero-arc.git
 cd omero-arc
-pip install -e .[dev] # installs optional dependencies including omero-cli-transfer and omero-py
+pip install -e .[dev] # installs optional dependencies including omero-cli-transfer
+conda install pytest
+
 ```
 
 ### Start OMERO test database
 
+Launch OMERO test environment with docker-compose.
 ```
 sudo chmod a+x .omero/compose # enure that compose is executable
 sudo .omoero/compose up
