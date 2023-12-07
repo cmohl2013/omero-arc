@@ -1,9 +1,14 @@
 # OMERO-ARC
 
+A plugin of [omero-cli-transfer](https://github.com/ome/omero-cli-transfer) to export Imaging Projects from the OMERO database to ARC repositories.
 
 ## Usage
 
-`omero-arc` is a plugin of [omero-cli-transfer](https://github.com/ome/omero-cli-transfer). Once installed, your can "pack" omero projects to ARC repositories:
+Once installed, your can "pack" omero projects to ARC repositories.
+
+If the ARC repo already exists, the OMERO project is added as a new study
+and connected assays.
+If the ARC repo does not exist, a new ARC repo is created.
 
 Examples:
 ```
