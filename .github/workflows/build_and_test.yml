@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Launch OMERO test database
-        run: sudo docker compose -f .omero/docker-compose.yml -p omero-arc -d up 
+        run: sudo docker compose -f .omero/docker-compose.yml -p omero-arc up -d 
         env:
             ROOTPASS: omero
             POSTGRES_IMAGE: postgres
