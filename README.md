@@ -16,6 +16,12 @@ pip install omero-arc
 
 ## Development
 
+```
+git clone git@github.com:cmohl2013/omero-arc.git
+cd omero-arc
+pip install -e .[dev] # installs optional dependencies including omero-cli-transfer and omero-py
+```
+
 ### Start OMERO test database
 
 ```

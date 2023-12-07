@@ -36,7 +36,7 @@ jobs:
         run: |
           $CONDA/bin/conda install -c anaconda python=3.8  
           $CONDA/bin/conda install -c conda-forge zeroc-ice=3.6.5
-          $CONDA/bin/python -m pip install .
+          $CONDA/bin/python -m pip install .[dev]
       - name: Install omero_arc dependencies
         run: |
           wget --quiet https://github.com/nfdi4plants/arcCommander/releases/download/v0.5.0-linux.x64/arc
@@ -48,7 +48,6 @@ jobs:
       - name: Run tests
         run: |
           $CONDA/bin/conda install pytest
-          $CONDA/bin/python -m pip install omero-py==5.13.1 ezomero==2.0.0 restview mox3 omero-cli-transfer
           export PATH="$CONDA/bin:$PATH"
           export PATH="$HOME/bin:$PATH"
           $CONDA/bin/pytest -v
