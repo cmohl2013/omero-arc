@@ -250,8 +250,7 @@ class AbstractArcTest(AbstractCLITest):
             return pix_ids
 
         path_to_img_file = (
-            Path(__file__).parent.parent
-            / "data/arc_test_data/img_files/CD_s_1_t_3_c_2_z_5.czi"
+            Path(__file__).parent / "data/img_files/CD_s_1_t_3_c_2_z_5.czi"
         )
         pix_ids = _add_local_image_file(path_to_img_file=path_to_img_file)
         # image_czi = self.gw.getObject("Image", int(pix_ids[0]))
@@ -276,10 +275,7 @@ class AbstractArcTest(AbstractCLITest):
         #     parent_object=image_czi,
         # )
 
-        path_to_img_file = (
-            Path(__file__).parent.parent
-            / "data/arc_test_data/img_files/sted-confocal.lif"
-        )
+        path_to_img_file = Path(__file__).parent / "data/img_files/sted-confocal.lif"
         _add_local_image_file(path_to_img_file=path_to_img_file)
 
         return dataset
@@ -543,13 +539,9 @@ class AbstractArcTest(AbstractCLITest):
     @pytest.fixture(scope="function")
     def path_arc_test_data(self, project_1, project_czi, request):
         path_to_arc_test_data = (
-            Path(__file__).parent.parent / "data/arc_test_data/packed_projects"
+            Path(__file__).parent / "data/tmp_test_data/packed_projects"
         )
         os.makedirs(path_to_arc_test_data, exist_ok=True)
-
-        if request.config.option.skip_create_arc_test_data:
-            # if pytest is used with option --not-create-arc-test-data
-            return path_to_arc_test_data
 
         shutil.rmtree(path_to_arc_test_data)
         os.makedirs(path_to_arc_test_data, exist_ok=True)

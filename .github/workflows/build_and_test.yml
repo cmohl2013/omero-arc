@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Launch OMERO test database
-        run: "sudo chmod +x .omero/* && .omero/compose up --detach"
+        run: sudo docker compose -f .omero/docker-compose.yml -p omero-arc -d up 
         env:
             ROOTPASS: omero
             POSTGRES_IMAGE: postgres
@@ -37,6 +37,14 @@ jobs:
           $CONDA/bin/conda install -c anaconda python=3.8  
           $CONDA/bin/conda install -c conda-forge zeroc-ice=3.6.5
           $CONDA/bin/python -m pip install .
+      - name: Install omero_arc dependencies
+        run: |
+          wget --quiet https://github.com/nfdi4plants/arcCommander/releases/download/v0.5.0-linux.x64/arc
+          mkdir $HOME/bin
+          mv arc $HOME/bin/
+          chmod a+x $HOME/bin/arc
+          export PATH="$HOME/bin:$PATH"
+          arc --version
       - name: Run tests
         run: |
           $CONDA/bin/conda install pytest
