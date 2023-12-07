@@ -1,5 +1,16 @@
 # OMERO-ARC
 
+
+## Usage
+
+`omero-arc` is a plugin of [omero-cli-transfer](https://github.com/ome/omero-cli-transfer). Once installed, your can "pack" omero projects to ARC repositories:
+
+Examples:
+```
+omero transfer pack --plugin arc Dataset:111 path/to/my/new/arc_repo
+omero transfer pack --plugin arc Dataset:111 path/to/my/already/existing/arc_repo
+```
+
 ## Installation
 
 

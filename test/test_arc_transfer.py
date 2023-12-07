@@ -9,7 +9,7 @@ class TestArcTransfer(AbstractArcTest):
         path_to_arc = tmp_path / "my_arc"
         args = self.args + [
             "pack",
-            "--plugin","pack_arc",
+            "--plugin","arc",
             dataset_identifier,
             str(path_to_arc),
         ]
@@ -22,7 +22,7 @@ class TestArcTransfer(AbstractArcTest):
         path_to_arc = tmp_path / "my_arc"
         args = self.args + [
             "pack",
-            "--plugin","pack_arc",
+            "--plugin","arc",
             project_identifier,
             str(path_to_arc),
         ]
@@ -45,7 +45,7 @@ class TestArcTransfer(AbstractArcTest):
 
         args = self.args + [
             "pack",
-             "--plugin","pack_arc",
+             "--plugin","arc",
             project_identifier,
             str(path_to_arc),
         ]
