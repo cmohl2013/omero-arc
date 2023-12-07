@@ -15,8 +15,8 @@ class TestArcPacker(AbstractArcTest):
         path_to_arc_repo = tmp_path / "my_arc"
         ap = ArcPacker(
             ome_object=project_czi,
-            path_to_arc_repo=path_to_arc_repo,
-            path_to_image_files=None,
+            destination_path=path_to_arc_repo,
+            tmp_path=None,
             image_filenames_mapping=None,
             conn=self.client,
         )
@@ -35,8 +35,8 @@ class TestArcPacker(AbstractArcTest):
         path_to_arc_repo = tmp_path / "my_arc"
         ap = ArcPacker(
             ome_object=project_with_arc_assay_annotation,
-            path_to_arc_repo=path_to_arc_repo,
-            path_to_image_files=None,
+            destination_path=path_to_arc_repo,
+            tmp_path=None,
             image_filenames_mapping=None,
             conn=self.client,
         )
@@ -61,8 +61,8 @@ class TestArcPacker(AbstractArcTest):
         path_to_arc_repo = tmp_path / "my_arc"
         ap = ArcPacker(
             ome_object=project_1,
-            path_to_arc_repo=path_to_arc_repo,
-            path_to_image_files=None,
+            destination_path=path_to_arc_repo,
+            tmp_path=None,
             image_filenames_mapping=None,
             conn=self.gw,
         )
@@ -89,8 +89,8 @@ class TestArcPacker(AbstractArcTest):
         path_to_arc_repo = tmp_path / "my_arc"
         ap = ArcPacker(
             ome_object=project,
-            path_to_arc_repo=path_to_arc_repo,
-            path_to_image_files=None,
+            destination_path=path_to_arc_repo,
+            tmp_path=None,
             image_filenames_mapping=None,
             conn=self.gw,
         )
@@ -159,8 +159,8 @@ class TestArcPacker(AbstractArcTest):
         path_to_arc_repo = tmp_path / "my_arc"
         ap = ArcPacker(
             ome_object=project_1,
-            path_to_arc_repo=path_to_arc_repo,
-            path_to_image_files=None,
+            destination_path=path_to_arc_repo,
+            tmp_path=None,
             image_filenames_mapping=None,
             conn=self.gw,
         )
@@ -178,8 +178,8 @@ class TestArcPacker(AbstractArcTest):
         path_to_arc_repo = tmp_path / "my_arc"
         ap = ArcPacker(
             ome_object=project_with_arc_assay_annotation,
-            path_to_arc_repo=path_to_arc_repo,
-            path_to_image_files=None,
+            destination_path=path_to_arc_repo,
+            tmp_path=None,
             image_filenames_mapping=None,
             conn=self.gw,
         )
@@ -221,8 +221,8 @@ class TestArcPacker(AbstractArcTest):
 
         ap = ArcPacker(
             ome_object=project_czi,
-            path_to_arc_repo=path_to_arc_repo,
-            path_to_image_files=path_omero_data_czi,
+            destination_path=path_to_arc_repo,
+            tmp_path=path_omero_data_czi,
             image_filenames_mapping=omero_data_czi_image_filenames_mapping,
             conn=self.gw,
         )

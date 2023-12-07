@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "omero-arc"
+dynamic = ["version"]
+authors = [{ name = "Christoph Möhl" }]
+description = "Plugin for omero-cli-transfer to export OMERO data to ARC repositories."
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.8"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Programming Language :: Python :: 3",
+
+]
+dependencies = ["omero-py==5.13.1", "pandas", "openpyxl"]
+
+[project.optional-dependencies]
+dev = [
+    "omero-cli-transfer",
+    "ome-types==0.4.2",
+    "omero-cli-transfer @ git+https://github.com/cmohl2013/omero-cli-transfer@pack_plugin",
+]
+
+
+[project.entry-points."omero_cli_transfer.pack.plugin"]
+arc = "omero_arc:ArcPacker"
+
+[project.urls]
+Homepage = "https://github.com/cmohl2013/omero-arc"

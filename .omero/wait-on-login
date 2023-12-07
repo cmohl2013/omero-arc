@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 
 import atexit
-import omero
 import os
 import socket
 import time
 
+import omero
 
 OMERO_DIST = os.environ.get("OMERO_DIST", "/opt/omero/server/OMERO.server")
 if not os.path.exists(OMERO_DIST):
