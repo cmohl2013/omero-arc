@@ -1,6 +1,6 @@
 import importlib
-from functools import lru_cache
 from copy import deepcopy
+from functools import lru_cache
 
 if importlib.util.find_spec("pandas"):
     import pandas as pd

@@ -1,10 +1,12 @@
-import os
-from pathlib import Path
-import subprocess
-import shutil
 import importlib
 import json
-from omero_arc.arc_mapping import IsaStudyMapper, IsaAssayMapper, IsaInvestigationMapper
+import os
+import shutil
+import subprocess
+from pathlib import Path
+
+from omero_arc.arc_mapping import (IsaAssayMapper, IsaInvestigationMapper,
+                                   IsaStudyMapper)
 
 if importlib.util.find_spec("pandas"):
     import pandas as pd

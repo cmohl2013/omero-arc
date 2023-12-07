@@ -1,8 +1,9 @@
+import numpy as np
+import pandas as pd
 from abstract_arc_test import AbstractArcTest
+
 from omero_arc import ArcPacker
 from omero_arc.arc_packer import is_arc_repo
-import pandas as pd
-import numpy as np
 
 
 class TestArcPacker(AbstractArcTest):

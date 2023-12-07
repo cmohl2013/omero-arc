@@ -16,5 +16,14 @@ pip install omero-arc
 
 ## Development
 
-Start OMERO test database
+### Start OMERO test database
 
+```
+sudo chmod a+x .omero/compose # enure that compose is executable
+sudo .omoero/compose up
+```
+
+### Run tests
+```
+OMERODIR="." ICE_CONFIG="test/ice.config" pytest -k arc_packer -v -k is_arc_repo
+```
