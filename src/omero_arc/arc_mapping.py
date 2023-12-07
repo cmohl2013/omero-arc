@@ -33,7 +33,8 @@ class AbstractIsaMapper:
             for d in isa_attributes["values"]:
                 cmd = isa_attributes.get("command", []).copy()
                 for key in d:
-                    command_option = isa_attributes["command_options"].get(key, None)
+                    command_options = isa_attributes["command_options"]
+                    command_option = command_options.get(key, None)
                     if command_option is not None:
                         value = d[key]
                         cmd.append(command_option)
@@ -111,20 +112,22 @@ class AbstractIsaAssaySheetMapper:
 
 class IsaInvestigationMapper(AbstractIsaMapper):
     def __init__(self, ome_project):
-        """Maps data of an omero project to isa investigation attributes of an ARC.
+        """Maps data of an omero project to isa investigation attributes of
+        an ARC.
 
-        The mapping of each value is defined in isa_attribute_config. Values are stored in Omero
+        The mapping of each value is defined in isa_attribute_config.
+        Values are stored in Omero
         as mapped annotations linked to the omero project.
 
-        * namespace: Mapped annotations are be identified by their namespace.
-            Only annotations that match the specified namespace are assigned to the
-            respective ARC key-values.
-        * default_values: Defines all keys that can be transfered from the mapped
-           annotation to the ARC and defines default values, if the value is not set
-           in a mapped annotation.
+        * namespace: Mapped annotations are be identified by their
+            namespace. Only annotations that match the specified
+            namespace are assigned to the respective ARC key-values.
+        * default_values: Defines all keys that can be transfered
+           from the mapped annotation to the ARC and defines default values,
+           if the value is not set in a mapped annotation.
         * command: ARCs are manipulated with the ARCCommander CLI.
-           command defines the ARCommander command that is executed to write the data from
-           the mapped annotation to the ARC repository.
+           command defines the ARCommander command that is executed to write
+            the data from the mapped annotation to the ARC repository.
 
 
 

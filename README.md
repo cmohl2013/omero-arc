@@ -25,5 +25,5 @@ sudo .omoero/compose up
 
 ### Run tests
 ```
-OMERODIR="." ICE_CONFIG="test/ice.config" pytest -k arc_packer -v -k is_arc_repo
+OMERODIR="." ICE_CONFIG="test/ice.config" pytest
 ```
