@@ -41,6 +41,20 @@ def original_image_metadata(image):
     return out
 
 
+def pack_arc(ome_object,
+             destination_path,
+             tmp_path,
+             image_filenames_mapping,
+             conn):
+
+    packer = ArcPacker(ome_object,
+                       destination_path,
+                       tmp_path,
+                       image_filenames_mapping,
+                       conn)
+    packer.pack()
+
+
 class ArcPacker(object):
     def __init__(
         self,
@@ -50,7 +64,7 @@ class ArcPacker(object):
         image_filenames_mapping,
         conn,
     ):
-        
+
         assert ome_object.OMERO_CLASS == "Project"
         self.obj = ome_object  # must be a project
         self.path_to_arc_repo = destination_path
@@ -73,7 +87,7 @@ class ArcPacker(object):
                     "existing ARC repository.")
             raise ValueError(msg)
 
-    
+
     def create_arc_repo(self):
         self.initialize_arc_repo()
         self.add_data_to_arc_repo()

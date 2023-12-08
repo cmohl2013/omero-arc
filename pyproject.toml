@@ -26,7 +26,7 @@ dev = [
 
 
 [project.entry-points."omero_cli_transfer.pack.plugin"]
-arc = "omero_arc:ArcPacker"
+arc = "omero_arc:pack_arc"
 
 [project.urls]
 Homepage = "https://github.com/cmohl2013/omero-arc"
