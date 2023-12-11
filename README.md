@@ -1,14 +1,12 @@
 # OMERO-ARC
 
-A plugin of [omero-cli-transfer](https://github.com/ome/omero-cli-transfer) to export Imaging Projects from the OMERO database to ARC repositories.
+A plugin for [omero-cli-transfer](https://github.com/ome/omero-cli-transfer) to export imaging projects from the OMERO database to ARC repositories.
 
 ## Usage
 
 Once installed, your can "pack" omero projects to ARC repositories.
 
-If the ARC repo already exists, the OMERO project is added as a new study
-and connected assays.
-If the ARC repo does not exist, a new ARC repo is created.
+If the ARC repository already exists, the OMERO project is added as a new study and connected assays. If the ARC repo does not exist, a new ARC repository is created.
 
 Examples:
 ```
@@ -27,6 +25,8 @@ omero transfer pack --plugin arc Dataset:111 path/to/my/already/existing/arc_rep
 ### Install omero-arc plugin
 
 ```
+git clone git@github.com:cmohl2013/omero-arc.git
+cd omero-arc
 pip install omero-arc
 ```
 
@@ -36,7 +36,7 @@ conda create -n myenv -c conda-forge python=3.8 zeroc-ice=3.6.5
 conda activate myvenv
 ```
 
-### Install omero-arc
+### Installation
 ```
 git clone git@github.com:cmohl2013/omero-arc.git
 cd omero-arc
@@ -50,7 +50,7 @@ conda install pytest
 Launch OMERO test environment with docker-compose.
 ```
 sudo chmod a+x .omero/compose # enure that compose is executable
-sudo .omoero/compose up
+sudo .omero/compose up
 ```
 
 ### Run tests
