@@ -21,7 +21,7 @@ dependencies = ["omero-py==5.13.1", "pandas", "openpyxl"]
 dev = [
     "omero-cli-transfer",
     "ome-types==0.4.2",
-    "omero-cli-transfer @ git+https://github.com/cmohl2013/omero-cli-transfer@pack_plugin",
+    "omero-cli-transfer @ git+https://github.com/cmohl2013/omero-cli-transfer@main",
 ]
 
 
