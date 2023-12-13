@@ -240,7 +240,7 @@ class IsaStudyMapper(AbstractIsaMapper):
         # annotation
         self.isa_attribute_config = {
             "metadata": {
-                "namespace": "ARC:ISA:STUDY:STUDY METADATA",
+                "namespace": "ARC:ISA:STUDY:STUDY",
                 "default_values": {
                     "Study Identifier": ome_project.getName().lower().replace(" ", "-"),
                     "Study Title": ome_project.getName(),
@@ -451,7 +451,7 @@ class IsaAssayMapper(AbstractIsaMapper):
 
         self.isa_attribute_config = {
             "metadata": {
-                "namespace": "ARC:ISA:ASSAY:ASSAY METADATA",
+                "namespace": "ARC:ISA:ASSAY:ASSAY",
                 "default_values": {
                     "Assay Identifier": ome_dataset.getName().lower().replace(" ", "-"),
                     "Measurement Type": None,
