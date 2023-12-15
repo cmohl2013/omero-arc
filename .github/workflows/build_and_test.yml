@@ -36,7 +36,7 @@ jobs:
         run: |
           $CONDA/bin/conda install -c anaconda python=3.8
           $CONDA/bin/conda install -c conda-forge zeroc-ice=3.6.5
-          $CONDA/bin/python "omero-cli-transfer @ git+https://github.com/ome/omero-cli-transfer@main"
+          $CONDA/bin/python -m pip install "omero-cli-transfer @ git+https://github.com/ome/omero-cli-transfer@main"
           $CONDA/bin/python -m pip install .[dev]
       - name: Install omero_arc dependencies
         run: |
