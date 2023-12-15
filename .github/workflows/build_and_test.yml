@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Launch OMERO test database
-        run: sudo chmod +x .omero/* && .omero/compose up -d 
+        run: sudo chmod +x .omero/* && .omero/compose up -d
         env:
           ROOTPASS: omero
           POSTGRES_IMAGE: postgres
@@ -34,8 +34,9 @@ jobs:
             python-version: "3.8"
       - name: Build omero_arc
         run: |
-          $CONDA/bin/conda install -c anaconda python=3.8  
+          $CONDA/bin/conda install -c anaconda python=3.8
           $CONDA/bin/conda install -c conda-forge zeroc-ice=3.6.5
+          $CONDA/bin/python -m pip install "omero-cli-transfer @ git+https://github.com/ome/omero-cli-transfer@main"
           $CONDA/bin/python -m pip install .[dev]
       - name: Install omero_arc dependencies
         run: |
@@ -55,4 +56,4 @@ jobs:
           OMERODIR: .
           ICE_CONFIG: test/ice.config
       - name: Stop OMERO test database
-        run: "sudo .omero/compose down"  
+        run: "sudo .omero/compose down"
