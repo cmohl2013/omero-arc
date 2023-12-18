@@ -25,8 +25,6 @@ omero transfer pack --plugin arc Dataset:111 path/to/my/already/existing/arc_rep
 ### Install omero-arc plugin
 
 ```
-git clone git@github.com:cmohl2013/omero-arc.git
-cd omero-arc
 pip install omero-arc
 ```
 
