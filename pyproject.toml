@@ -3,8 +3,8 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
+version = "0.0.1"
 name = "omero-arc"
-dynamic = ["version"]
 authors = [{ name = "Christoph Möhl" }]
 description = "Plugin for omero-cli-transfer to export OMERO data to ARC repositories."
 readme = "README.md"
