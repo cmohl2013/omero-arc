@@ -150,7 +150,7 @@ class AbstractArcTest(AbstractCLITest):
     def dataset_with_arc_assay_annotation(self):
         dataset = self.make_dataset(name="My Assay with Annotations")
 
-        annotation_namespace = "ARC:ISA:ASSAY:ASSAY METADATA"
+        annotation_namespace = "ARC:ISA:ASSAY:ASSAY"
         annotations = {
             "Assay Identifier": "my-custom-assay-id",
             "Measurement Type": ("High resolution transmission electron micrograph"),
@@ -372,7 +372,7 @@ class AbstractArcTest(AbstractCLITest):
             parent_object=project,
         )
 
-        annotation_namespace = "ARC:ISA:STUDY:STUDY METADATA"
+        annotation_namespace = "ARC:ISA:STUDY:STUDY"
         annotations = {
             "Study Identifier": "my-custom-study-id",
             "Study Title": "My Custom Study Title",
