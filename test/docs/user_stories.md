@@ -61,3 +61,53 @@ Upload to OMERO using ARC-OMERO transfer plugin.
 Work on the data in OMERO. 
 Download the ARC back using OMERO-ARC 
 Publish it to DATAPlant DataHUB.
+
+
+# Use Case: Investigating Algal Changes Under Heat Stress
+
+## Overview
+This use case describes a workflow for investigating how algae respond to heat stress, using a variety of assays and imaging techniques. The workflow involves the collection and documentation of samples, performing multiple assays, and using specialized software for data analysis and visualization.
+
+## Actors
+- **Primary User (Researcher)**: Conducts the investigation and uses various software tools to document and analyze data.
+- **Data scientist**: Developed object tracking workflow for cell detection and runs workflow within the ARC
+- **Software Developer**: Implements software plug-in that is aware of the metadata to impose the results of two different assays (image and ROIs (Regions of Interest)).
+
+## Main Flow
+1. **Setup and Documentation**:
+   - The researcher initiates an investigation into the effects of heat stress on algae.
+   - Liquid culture samples are taken from a bioreactor under controlled conditions.
+   - The administrative metadata for the investigation is documented in ARC according to the ISA model.
+   - Details about the sample material and the sampling process are recorded in the ISA study.
+
+2. **Performing Assays**:
+   - The same sample material is used for multiple assays, including:
+     - **Proteomics**: To study the protein expressions.
+     - **Metabolomics**: To analyze metabolic changes.
+     - **RNAseq**: To investigate gene expression changes.
+   - Phenotypic changes are recorded using light microscopy.
+   - Electron microscopy images are taken to detect the formation of starch granules.
+
+3. **Data Management**:
+   - Each assay produces its own dataset according to the ARC structure.
+   - Light microscopy images are used as input for a workflow that performs cell object detection, resulting in ROIs without the images themselves.
+
+4. **Data Visualization**:
+   - The researcher uses OMERO software to browse through both light microscopy and electron microscopy images.
+   - The ROIs generated from the object detection workflow are overlaid on the corresponding images within OMERO for detailed analysis.
+
+## Postconditions
+- The researcher successfully browses and analyzes the images and corresponding ROIs in OMERO.
+- Insights into the algal response to heat stress are gained through the integrated analysis of multiple assays and imaging techniques.
+
+## Extensions
+- **Error Handling**: If there is an issue with the data import into OMERO, the system should provide clear error messages and suggestions for resolving the issues.
+- **Data Export**: The researcher may need to export the combined image and ROI data for presentations or further analysis into an additional OMERO assay.
+
+## Benefits
+- **Comprehensive Analysis**: Combining various assays and imaging techniques provides a holistic view of the algal response to heat stress.
+- **Efficient Data Management**: The ISA model and ARC structure ensure systematic documentation and organization of data.
+- **Enhanced Visualization**: OMERO facilitates easy browsing and detailed examination of images and ROIs.
+
+## Conclusion
+This use case highlights the importance of integrating documentation, data analysis, and visualization tools in a scientific investigation. By leveraging ARC for metadata management and OMERO for image analysis, researchers can gain valuable insights into the biological effects of environmental stressors on algae.
