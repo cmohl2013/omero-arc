@@ -24,6 +24,11 @@ omero transfer pack --plugin arc Dataset:113 path/to/my/arc/repo/lysosome_traffi
 * Finally she pushes the updated repository to Remote using `git`
 
 
+<br />
+<br />
+<br />
+
+
 # CLEM variant 1
 ## Background
 
@@ -62,6 +67,10 @@ Work on the data in OMERO.
 Download the ARC back using OMERO-ARC 
 Publish it to DATAPlant DataHUB.
 
+
+<br />
+<br />
+<br />
 
 # Use Case: Investigating Algal Changes Under Heat Stress
 
@@ -111,3 +120,64 @@ This use case describes a workflow for investigating how algae respond to heat s
 
 ## Conclusion
 This use case highlights the importance of integrating documentation, data analysis, and visualization tools in a scientific investigation. By leveraging ARC for metadata management and OMERO for image analysis, researchers can gain valuable insights into the biological effects of environmental stressors on algae.
+
+
+<br />
+<br />
+<br />
+
+
+# Use Case : Management of Data for Research Institute
+
+
+## Background : 
+
+Moritz, a data manager for his institute, wants to create a local ImageHub which will be connected to OMERO. All the data and metadata in the ImageHub remains in the local system as folders and in-place imported to OMERO.
+
+Similarly, for ARCs he wants to create a local storage location where researchers from his institute would place and work on their ARC.  This location will be connected to OMERO and users would upload and update their ARC in OMERO and vice versa.
+ 
+
+## Objective : 
+
+In-place import of ARC to OMERO from ARC location or other configurable location.
+Update of in-place imported ARC data and metadata in OMERO.
+Update of data and metadata from OMERO to ARC location or other configurable location.
+
+## Actors : 
+
+1. Data Manager/ Steward : Manages and monitors data for the institute or facility.
+2. Researchers : Creates an ARC and uses OMERO for imaging data and metadata.
+3. IT department : Provides storage space for ARC location.
+4. Developer :  Develops user friendly applications.
+
+
+## Workflow Examples:
+
+### User Perspective : 
+
+1. Create an ARC in an ARC storage location.
+2. Clicks a button in OMERO.web  and in-place imports the ARC or part of it (i.e. Assays, Study)
+3. Draws ROI on an image in OMERO and saves it.
+4. Clicks a button and updates the ARC in the ARC storage location.
+5. After a week the user adds more data and metadata to the ARC in the ARC storage location.
+6. Clicks a button in OMERO.web and updates the ARC in OMERO.web
+
+
+
+### Developer Perspective:
+
+1. Creates a user-friendly application.
+2. Create an OMERO extension, for example a web-app extension.
+3. Web app contains button to Upload(Link) data and metadata from an ARC in ARC storage location.
+4. Web app provides a possibility to configure location of ARC (i.e. ARC storage location or other location in the local machine).
+5. Web App provides buttons to Update the ARC in OMERO and Update the same ARC in ARC storage location. (i.e. on-demand syncing).
+
+  
+
+## Benefits:
+
+1. With in-place import of data, duplication can be avoided.
+2. Researchers can easily find, visualize and collaborate with imaging ARC linked to OMERO.
+3. Bi-directional update (on-demand sync) of an ARC provides users to seamlessly utilize OMERO capabilities while being rooted in ARC at the ARC storage location.
+ 
+
