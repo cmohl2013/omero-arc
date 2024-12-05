@@ -55,3 +55,5 @@ sudo .omero/compose up
 ```
 OMERODIR="." ICE_CONFIG="test/ice.config" pytest
 ```
+
+edit
