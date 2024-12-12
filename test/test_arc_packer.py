@@ -5,11 +5,28 @@ from abstract_arc_test import AbstractArcTest
 from omero_arc import ArcPacker
 from omero_arc.arc_packer import is_arc_repo
 
+import pytest
+
 
 class TestArcPacker(AbstractArcTest):
     def test_is_arc_repo(self, arc_repo_1, tmp_path):
         assert not is_arc_repo(tmp_path)
         assert is_arc_repo(arc_repo_1.path_to_arc_repo)
+
+
+    def test_arc_packer_fails_for_dataset(self, dataset_1, tmp_path):
+        path_to_arc_repo = tmp_path / "my_arc"
+
+        with pytest.raises(AssertionError):
+            ap = ArcPacker(
+                ome_object=dataset_1,
+                destination_path=path_to_arc_repo,
+                tmp_path=None,
+                image_filenames_mapping=None,
+                conn=self.client,
+            )
+
+
 
     def test_arc_packer_initialize(self, project_czi, tmp_path):
         path_to_arc_repo = tmp_path / "my_arc"

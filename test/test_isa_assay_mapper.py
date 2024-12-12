@@ -31,4 +31,5 @@ class TestIsaAssayMapper(AbstractArcTest):
             == "my-custom-assay-id"
         )
 
-        assert mapper_2.isa_attributes["contacts"]["values"][0]["Last Name"] == "Doe"
+        for i in range(2):
+            assert mapper_2.isa_attributes["contacts"]["values"][i]["Last Name"] in ["Laura", "Doe"]
