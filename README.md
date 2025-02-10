@@ -1,10 +1,10 @@
 # OMERO-ARC
 
-A plugin for [omero-cli-transfer](https://github.com/ome/omero-cli-transfer) to export imaging projects from the OMERO database to ARC repositories.
+A plugin for [omero-cli-transfer](https://github.com/ome/omero-cli-transfer) to export imaging projects from the [OMERO](https://www.openmicroscopy.org/omero/) database to an [ARC](https://nfdi4plants.github.io/nfdi4plants.knowledgebase/start-here/) locally.
 
 ## Usage
 
-Once installed, your can "pack" omero projects to ARC repositories.
+Once installed, your can "pack" omero projects to an ARC. The project metadata is mapped to studies in an ARC along with investigation metadata and the datasets are mapped to the assays. If there exits [ISA](https://isa-specs.readthedocs.io/en/latest/isamodel.html#) metadata mapped to projects and datasets as described, with proper namespaces in omero key-value pair, the (meta)data is transfered from omero to the local ARC.
 
 If the ARC repository already exists, the OMERO project is added as a new study and connected assays. If the ARC repo does not exist, a new ARC repository is created.
 
